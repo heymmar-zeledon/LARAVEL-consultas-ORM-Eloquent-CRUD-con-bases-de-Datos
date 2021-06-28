@@ -14,7 +14,7 @@ class CreateAulasTable extends Migration
     public function up()
     {
         Schema::create('aulas', function (Blueprint $table) {
-            $table->unsignedBigInteger('id',20);
+            $table->id();
             $table->string('nombre',255);
             $table->string('ubicacion');
             $table->timestamps();

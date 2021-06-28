@@ -21,9 +21,7 @@ class ClaseFactory extends Factory
      */
     public function definition()
     {
-        $codclase = $this->faker->unique()->postcode(5);
         return[
-            'id' => $codclase,
             'nombre' => $this->faker->catchPhrase(),
             'credito' => $this->faker->randomDigitNot(0),
         ];

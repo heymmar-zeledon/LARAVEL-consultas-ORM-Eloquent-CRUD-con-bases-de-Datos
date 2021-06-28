@@ -21,9 +21,7 @@ class AulaFactory extends Factory
      */
     public function definition()
     {
-        $id = $this->faker->unique()->bankAccountNumber();
         return [
-            'id' => $id,
             'nombre' => $this->faker->streetName,
             'ubicacion' => $this->faker->state,
         ];

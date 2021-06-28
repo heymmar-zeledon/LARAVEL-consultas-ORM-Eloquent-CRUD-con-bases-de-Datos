@@ -22,11 +22,10 @@ class ProfesorFactory extends Factory
      */
     public function definition()
     {
-        $id = $this->faker->unique()->buildingNumber;
         $persona = [$this->faker->firstNameMale,$this->faker->firstNameFemale];
+        
         $titulos = ['LIC','ING','MSC','DOC'];
         return [
-            'id' => $id,
             'nombre' => Arr::random($persona),
             'apellido' => $this->faker->lastName,
             'titulo' => Arr::random($titulos),

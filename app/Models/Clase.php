@@ -11,11 +11,11 @@ class Clase extends Model
 
     public function profesors()
     {
-        return $this->belongsToMany(Profesor::class);
+        return $this->belongsToMany(Profesor::class,'profesor_aula_clase')->withPivot('id_aula');
     }
 
     public function aulas()
     {
-        return $this->belongsToMany(Aula::class);
+        return $this->belongsToMany(Aula::class,'profesor_aula_clase')->withPivot('id_profesor');
     }
 }

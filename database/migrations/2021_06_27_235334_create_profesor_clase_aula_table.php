@@ -14,14 +14,13 @@ class CreateProfesorClaseAulaTable extends Migration
     public function up()
     {
         Schema::create('profesor_clase_aula', function (Blueprint $table) {
-            $table->string('c_codclase');
-            $table->string('p_idprofesor');
-            $table->bigInteger('a_idaula')->unsigned();
+            $table->string('id_profesor',20)->unique();
+            $table->string('id_clase',20)->unique();
+            $table->unsignedBigInteger('id_aula',20);
+            $table->foreign('id_profesor')->references('id')->on('profesors')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_clase')->references('id')->on('clases')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_aula')->references('id')->on('aulas')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
-            
-            $table->foreign('c_codclase')->references('codclase')->on('clases')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('p_idprofesor')->references('id')->on('profesors')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('a_idaula')->references('id')->on('aulas')->onDelete('cascade')->onUpdate('cascade');
         });
     }
     /**

@@ -14,8 +14,8 @@ class CreateClasesTable extends Migration
     public function up()
     {
         Schema::create('clases', function (Blueprint $table) {
-            $table->string('codclase');
-            $table->string('nombre');
+            $table->string('id', 20)->primary();
+            $table->string('nombre',255);
             $table->integer('credito');
             $table->timestamps();
         });

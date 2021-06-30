@@ -1,11 +1,6 @@
 @extends('livewire.plantilla-main')
  
 @section('contenido')
-@if ($res != null)
-    <div class="alert alert-danger" role="alert">
-        {{$res}}
-    </div>
-@endif
 <hr>
 <h1>Nueva clase</h1>
 <form class="alert alert-secondary" action="{{url('/clases/guardar')}}" method="post">

@@ -1,6 +1,21 @@
 @extends('livewire.plantilla-main')
  
 @section('contenido')
+@if ($res == "Se guardo un nuevo profesor con exito!!")
+    <div class="alert alert-success" role="alert">
+        {{$res}}
+    </div>
+@endif
+@if ($res == "Se ha eliminado un profesor")
+    <div class="alert alert-danger" role="alert">
+        {{$res}}
+    </div>
+@endif
+@if ($res == "Se ha actualizado un profesor")
+    <div class="alert alert-info" role="alert">
+        {{$res}}
+    </div>
+@endif
 <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 <a type="button" class="btn btn-success" href="{{url('/maestros/nuevo')}}">Nuevo maestro</a>
 <hr>
@@ -23,7 +38,7 @@
             {{$profesor->titulo}}
         </td>
         <th class="border border-danger">
-        <a href="{{url('/maestros/eliminar/'.$profesor->id)}}" class="btn btn-danger">Borrar</a>&nbsp;<a href="{{url('/maestros/actualizar/'.$profesor->id)}}" class="btn btn-primary">Editar</a>
+        <a href="{{url('/maestros/eliminar/'.$profesor->id)}}" class="btn btn-danger">Borrar</a>&nbsp;<a href="{{url('/maestros/editar/'.$profesor->id)}}" class="btn btn-primary">Editar</a>
         </th>
     </tr>
     @empty

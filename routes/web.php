@@ -20,15 +20,15 @@ Route::get('/', function () {
 });
 Route::get('/maestros', [ProfesorController::class, 'mostrarlista']);
 
-Route::post('/maestros/guardar', [ProfesorController::class, 'guardar']);
+Route::post('/maestros/guardar/', [ProfesorController::class, 'guardar']);
 
 Route::get('/maestros/nuevo/', [ProfesorController::class, 'formulariomaestro']);
 
 Route::get('/maestros/eliminar/{id}', [ProfesorController::class, 'eliminar']);
 
-Route::get('/maestros/actualizar/{id}', [ProfesorController::class, 'mostrar']);
+Route::get('/maestros/editar/{id}', [ProfesorController::class, 'editar']);
 
-Route::post('/maestros/actualizar/{id}', [Profesorontroller::class, 'actualizar']);
+Route::patch('/maestros/actualizar/{id}', [ProfesorController::class, 'actualizar']);
 
 //----------------------------------------------------------------------------------
 Route::get('/aulas', [AulaController::class, 'mostrarlistaaulas']);
@@ -53,6 +53,6 @@ Route::post('/clases/guardar', [ClaseController::class, 'guardar']);
 
 Route::get('/clases/eliminar/{codclase}',[ ClaseController::class, 'eliminar']);
 
-Route::get('/clases/actualizar/{codclase}',[ ClaseController::class, 'mostrar']);
+Route::get('/clases/editar/{codclase}',[ ClaseController::class, 'editar']);
 
 Route::post('/clases/actualizar/{id}',[ClaseController::class, 'actualizar']);

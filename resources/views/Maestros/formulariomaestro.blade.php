@@ -1,15 +1,10 @@
 @extends('livewire.plantilla-main')
  
 @section('contenido')
-@if ($res != null)
-    <div class="alert alert-danger" role="alert">
-        {{$res}}
-    </div>
-@endif
 <hr>
 <h1>Nuevo Profesor</h1>
-<form class="alert alert-secondary" action="{{url('/maestros')}}" method="post">
-    {{csrf_field()}}
+<form class="alert alert-secondary" action="{{url('/maestros/guardar/')}}" method="post">
+    {{ csrf_field() }}
     <div class="form-group">
         <label for="idmaestro">Nombre:</label>
         <input style="width: 40%" type="text" class="form-control" name="nombremaestro" placeholder="Ingrese el nombre del maestro" required>

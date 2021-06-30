@@ -5,8 +5,8 @@
     </div>
 </div>
 <br>
-<div class="container" style="padding-bottom: 40px;">
-        <div class=" col-sm-12 alert alert-secondary" role="alert">
-            @yield('contenido')
-        </div>
+<div class="container flex" style="padding-bottom: 40px;">
+    <div class=" col-sm-16" role="alert">
+        @yield('contenido')
+    </div>
 </div>

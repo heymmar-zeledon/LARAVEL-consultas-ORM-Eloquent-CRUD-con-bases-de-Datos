@@ -18,57 +18,50 @@ class AulaController extends Controller
         return view("Aulas.formularioaulas");
     }
 
-    /*edit//para las aulas tomando referencia las clases.
+    public function guardar(Request $request){
 
-    public function guardar(Request $request)
-    {
-        if ($request->isMethod("post") && $request->has("addclase")){
-           
-            $nombre = $request->input('nombreclase');
-            $credito = $request->input('creditoclase');
+        if ($request->isMethod("post") && $request->has("addaula")){
+            $nombre = $request->input('nombreaula');
+            $ubicacion = $request->input('ubicacionaula');
 
-            $new_clase = Clase::create([
+            $new_aula = Aula::create([
                 'nombre' => $nombre,
-                'credito' => $credito,
+                'ubicacion' => $ubicacion,
             ]);
 
-            $res = "Se guardo una nueva clase con exito!!";
+            $res = "Se guardo una nueva aula con exito!!";
 
-            $Clases = Clase::all();
-            return view('Clases.listaclases', compact('Clases'))->with('res',$res);
+            $Aulas = Aula::all();
+            return view('Aulas.listaaulas', compact('Aulas'))->with('res',$res);
         }
     }
 
-    public function eliminar($codclase){
-
-        $class_delete = Clase::find($codclase);
-        $class_delete->delete();
-        $Clases = Clase::all();
-        $res = "Se ha eliminado una clase";
-        return view('Clases.listaclases', compact('Clases'))->with('res',$res);
+    public function eliminar($idaeliminardeaula){
+        $Auladelete = Aula::find($idaeliminardeaula);
+        $Auladelete->delete();
+        $Aulas = Aula::all();
+        $res = "Se ha eliminado una aula";
+        return view('Aulas.listaaulas', compact('Aulas'))->with('res',$res);
     }
 
-    public function actualizar(Request $request, $codclase){
+    public function editar($idamostrar){
+        $aula_edit = Aula::find($idamostrar);
+        return view('Aulas.formularioaulasaeditar', compact('aula_edit'));
+    }
 
-        $Clase = Clase::find($codclase);
-        $nombre = $request->input('nombreclase');
-        $credito = $request->input('creditoclase');
+    public function actualizar(Request $request, $idaactualizar){
+        $Aula = Aula::find($idaactualizar);
+        $nombre = $request->input('nombreaula');
+        $ubicacion = $request->input('ubicacionaula');
 
-        $Clase->update([
+        $Aula->update([
             'nombre' => $nombre,
-            'credito' => $credito,
+            'ubicacion' => $ubicacion,
         ]);
 
-        $res = "Se ha actualizado una clase";
+        $res = "Se ha actualizado una aula";
 
-        $Clases = Clase::all();
-        return view('Clases.listaclases', compact('Clases'))->with('res',$res);
-
+        $Aulas = Aula::all();
+        return view('Aulas.listaaulas', compact('Aulas'))->with('res',$res);
     }
-
-    public function editar($codclaseamostrar){
-        $clase = Clase::find($codclaseamostrar);
-        return view('Clases.formularioeditarclase', compact('clase'));
-    
-    }*/
 }

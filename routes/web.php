@@ -39,7 +39,7 @@ Route::get('/aulas/nueva', [AulaController::class, 'formularioaulas']);
 
 Route::get('/aulas/eliminar/{id}',[ AulaController::class, 'eliminar']);
 
-Route::get('/aulas/actualizar/{id}', [AulaController::class, 'mostrar']);
+Route::get('/aulas/editar/{id}', [AulaController::class, 'editar']);
 
 Route::post('/aulas/actualizar/{id}',[AulaController::class, 'actualizar']);
 

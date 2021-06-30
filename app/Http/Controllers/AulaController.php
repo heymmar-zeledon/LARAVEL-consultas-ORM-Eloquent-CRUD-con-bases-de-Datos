@@ -12,4 +12,9 @@ class AulaController extends Controller
         $Aulas = Aula::all();
         return view('Aulas.listaaulas', compact('Aulas'));
     }
+
+    public function formularioaulas(){
+        $res = null;
+        return view("Aulas.formularioaulas")->with('res',$res);
+    }
 }

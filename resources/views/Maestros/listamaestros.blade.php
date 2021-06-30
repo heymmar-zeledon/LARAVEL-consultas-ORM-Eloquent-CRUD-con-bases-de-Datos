@@ -2,7 +2,7 @@
  
 @section('contenido')
 <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-<a type="button" class="btn btn-success" href="{{url('/maestros/nuevo')}}">Nuevo</a>&nbsp;&nbsp;&nbsp;
+<a type="button" class="btn btn-success" href="{{url('/maestros/nuevo')}}">Nuevo maestro</a>
 <hr>
 
 <table class="table table-bordered text-center">

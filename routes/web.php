@@ -20,7 +20,7 @@ Route::get('/', function () {
 });
 Route::get('/maestros', [ProfesorController::class, 'mostrarlista']);
 
-Route::post('/maestros', [ProfesorController::class, 'guardar']);
+Route::post('/maestros/guardar', [ProfesorController::class, 'guardar']);
 
 Route::get('/maestros/nuevo/', [ProfesorController::class, 'formulariomaestro']);
 

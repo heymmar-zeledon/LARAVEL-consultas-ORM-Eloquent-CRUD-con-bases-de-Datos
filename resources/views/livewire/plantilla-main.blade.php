@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="{{ asset('css/app.css') }}">
 <div class="container pt-2">
     <div class="a1">
         <H4 class="border border-success" id="h4"> BASES DE DATOS RELACIONALES</H4>

@@ -12,4 +12,9 @@ class ClaseController extends Controller
         $Clases = Clase::all();
         return view('Clases.listaclases',compact('Clases'));
     }
+
+    public function formularioclases(){
+        $res = null;
+        return view ('Clases.formularioclases')->with('res',$res);
+    }
 }

@@ -1,19 +1,23 @@
-    @extends('ejemploplantilla')
+@extends('livewire.plantilla-main')
  
-    @section('contenido')
-    @if ($res != null)
-        <div class="alert alert-danger" role="alert">
-            {{$res}}
-        </div>
-    @endif
-    <hr>
-    <h1>Agregar aula</h1>
-    <form action="{{url('/aulas/guardar')}}" method="POST">
-        {{csrf_field()}}
-
-        ID: <input type="text" name="idaula" required>
-        Nombre: <input type="text" name="nombreaula" required>
-        Ubicación: <input type="text" name="ubicacionaula" required>&nbsp;&nbsp;&nbsp;
-       <input class="btn btn-success" type="submit" value="Agregar Aula" name="addaula">
+@section('contenido')
+@if ($res != null)
+    <div class="alert alert-danger" role="alert">
+        {{$res}}
+    </div>
+@endif
+<hr>
+<h1>Nueva clase</h1>
+<form class="alert alert-secondary" action="{{url('/aulas/guardar')}}" method="post">
+    {{csrf_field()}}
+    <div class="form-group">
+        <label for="nombreaula">Nombre:</label>
+        <input style="width: 40%" type="text" class="form-control" name="nombreaula" placeholder="Ingrese el nombre del aula" required>
+     </div>
+    <div class="form-group">
+        <label for="ubicacionaula">Ubicacion:</label>
+        <input class="form-control"  name="ubicacionaula" type="text" style="width: 40%" placeholder="Ingrese la ubicacion del aula" required>
+    </div>
+        <input class="btn btn-success" type="submit" value="Agregar Aula" name="addaula">
     </form>
-    @endsection
+@endsection

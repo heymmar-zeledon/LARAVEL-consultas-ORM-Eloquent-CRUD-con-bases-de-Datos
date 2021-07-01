@@ -30,6 +30,8 @@ Route::get('/maestros/editar/{id}', [ProfesorController::class, 'editar']);
 
 Route::patch('/maestros/actualizar/{id}', [ProfesorController::class, 'actualizar']);
 
+Route::get('/maestros/relaciones/', [ProfesorController::class, 'Mostrar_relaciones']);
+
 //----------------------------------------------------------------------------------
 Route::get('/aulas', [AulaController::class, 'mostrarlistaaulas']);
 

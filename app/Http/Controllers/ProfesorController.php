@@ -73,4 +73,10 @@ class ProfesorController extends Controller
         $res = "Se ha actualizado un profesor";
         return view('Maestros.listamaestros', compact('Profesores'))->with('res',$res);
     }
+
+    public function mostrar_relaciones()
+    {
+        $Profesors = Profesor::all();
+        return view('ListaDetallada',compact('Profesors'));
+    }
 }

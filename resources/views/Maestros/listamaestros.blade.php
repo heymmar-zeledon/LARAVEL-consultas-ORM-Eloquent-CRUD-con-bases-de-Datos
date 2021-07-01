@@ -18,6 +18,7 @@
 @endif
 <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 <a type="button" class="btn btn-success" href="{{url('/maestros/nuevo')}}">Nuevo maestro</a>
+<a type="button" class="btn btn-info" href="{{url('/maestros/relaciones/')}}">Ver Relaciones</a>
 <hr>
 
 <table class="table table-bordered text-center">

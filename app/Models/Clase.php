@@ -11,11 +11,11 @@ class Clase extends Model
     protected $guarded = ['id','created_at','update_at'];
     public function profesors()
     {
-        return $this->belongsToMany(Profesor::class,'profesor_aula_clase')->withPivot('id_aula');
+        return $this->belongsToMany(Profesor::class,'profesor_aula_clase')->withPivot('aula_id');
     }
 
     public function aulas()
     {
-        return $this->belongsToMany(Aula::class,'profesor_aula_clase')->withPivot('id_profesor');
+        return $this->belongsToMany(Aula::class,'profesor_aula_clase')->withPivot('profesor_id');
     }
 }

@@ -4,15 +4,11 @@
 <a type="button" class="btn btn-secondary" href="{{url('/maestros/relaciones/')}}">Regresar</a>
 <hr>
 <h1>Nueva Relacion</h1>
-<form class="alert alert-secondary" action="{{url('/maestros/AñadirRelacion/'.$profesorRelacion->id)}}" method="post">
+<form class="alert alert-secondary" action="{{url('/maestros/añadirRelacion/'.$profesorRelacion->id)}}" method="post">
     {{ csrf_field() }}
     <div class="form-group">
-        <label for="idmaestro">ID</label>
-        <input style="width: 40%" type="text" value="{{$profesorRelacion->id}}" class="form-control" name="idmaestro" readonly required>
-     </div>
-    <div class="form-group">
         <label for="nombremaestro">Nombre:</label>
-        <input style="width: 40%" type="text" value="{{$profesorRelacion->nombre}}" class="form-control" name="nombremaestro" readonly required>
+        <input style="width: 40%" type="text" value="{{$profesorRelacion->id."- ".$profesorRelacion->nombre}}" class="form-control" name="nombremaestro" readonly required>
      </div>
     <div class="row">
         <div class="form-group col-sm-6 border border-secondary">

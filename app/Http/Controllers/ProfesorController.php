@@ -80,7 +80,7 @@ class ProfesorController extends Controller
     {
         $Profesors = Profesor::all();
         $res = null;
-        return view('ListaDetallada',compact('Profesors'))->with('res',$res);;
+        return view('ListaDetallada',compact('Profesors'))->with('res',$res);
     }
 
     public function NuevaRelacion($idrelacion)
@@ -98,40 +98,42 @@ class ProfesorController extends Controller
             $profesorNewRelation = Profesor::find($idd);
             $clase = $request->input('clase');
             $aula = $request->input('aula');
-            $valclase = false;
+            $valclass = false;
             $valaula = false;
-            foreach($profesorNewRelation->clases as $profclase)
+            foreach($profesorNewRelation->clases as $class)
             {
-                if($profclase->id == $clase)
+                if($class->id == $clase)
                 {
-                    $valclase = true;
+                    $valclass = true;
                     break;
                 }
             }
-            foreach($profesorNewRelation->aulas as $profaula)
+            foreach($profesorNewRelation->aulas as $auls)
             {
-                if($profaula->id == $aula)
+                if($auls->id == $aula)
                 {
-                    $valclase = true;
+                    $valaula = true;
                     break;
                 }
             }
-            if($profclase == true && $profaula == true)
+            if($valclass == true && $valaula == true)
             {
-                $r = "Esta relacion ya existe!! Realize una relacion diferente";
-                return view('ListaDetallada')->with('res',$r);
+                $r = "Relacion existente!! ingrese otra relacion diferente";
+                $Profesors = Profesor::all();
+                return view('ListaDetallada',compact('Profesors'))->with('res',$r);
             }
             else
             {
                 try{
                     $profesorNewRelation->clases()->attach($clase,['aula_id' => $aula]);
-                }catch(Exception $r)
+                }catch(Exception $err)
                 {
-                    return view('ListaDetallada')->with('res',$r);
-                    $r = "Se ha agregado una nueva relacion con exito!!";
                     $Profesors = Profesor::all();
-                    return view('ListaDetallada',compact('Profesors'))->with('res',$r);
+                    return view('ListaDetallada',compact('Profesors'))->with('res',$err);
                 }
+                $r = "Se ha agregado una nueva relacion con exito!!";
+                $Profesors = Profesor::all();
+                return view('ListaDetallada',compact('Profesors'))->with('res',$r);
             }
         }
     }

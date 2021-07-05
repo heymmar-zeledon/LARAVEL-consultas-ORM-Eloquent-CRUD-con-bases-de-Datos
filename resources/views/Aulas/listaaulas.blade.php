@@ -17,6 +17,7 @@
     </div>
 @endif
 <a type="button" class="btn btn-success" href="{{url('/aulas/nueva')}}">Nueva aula</a>
+<a type="button" class="btn btn-info" href="{{url('/maestros/relaciones/')}}">Ver Relaciones</a>
 <hr>
 <table class="table table-bordered text-center">
     <tr><th class="border border-primary" colspan="4"><h3>Aulas</h3></th></tr>

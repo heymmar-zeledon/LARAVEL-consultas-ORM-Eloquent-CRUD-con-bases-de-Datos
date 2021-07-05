@@ -22,6 +22,12 @@ Route::get('/maestros', [ProfesorController::class, 'mostrarlista']);
 
 Route::post('/maestros/guardar/', [ProfesorController::class, 'guardar']);
 
+Route::get('/maestros/NuevaRelacion/{id}', [ProfesorController::class, 'NuevaRelacion']);
+
+Route::post('/maestros/añadirRelacion/{id}', [ProfesorController::class, 'añadirRelacion']);
+
+Route::get('/maestros/eliminarRelacion/', [ProfesorController::class, 'EliminarRelacion']);
+
 Route::get('/maestros/nuevo/', [ProfesorController::class, 'formulariomaestro']);
 
 Route::get('/maestros/eliminar/{id}', [ProfesorController::class, 'eliminar']);

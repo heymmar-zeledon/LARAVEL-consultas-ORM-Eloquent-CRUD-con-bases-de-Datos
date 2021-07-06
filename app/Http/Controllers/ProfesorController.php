@@ -138,8 +138,12 @@ class ProfesorController extends Controller
         }
     }
 
-    public function EliminarRelacion()
+    public function EliminarRelacion($idprofesor, $idclase, $idaula, $id)
     {
-        
+        $prof = Profesor::find($idprofesor);
+        $prof->clases()->where('clases.id',$idclase)->wherePivot('id',$id)->detach();
+        $Profesors = Profesor::all();
+        $r = "Se ha eliminado una relacion!!";
+        return view('ListaDetallada',compact('Profesors'))->with('res',$r);
     }
 }

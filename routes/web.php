@@ -26,7 +26,7 @@ Route::get('/maestros/NuevaRelacion/{id}', [ProfesorController::class, 'NuevaRel
 
 Route::post('/maestros/añadirRelacion/{id}', [ProfesorController::class, 'añadirRelacion']);
 
-Route::get('/maestros/eliminarRelacion/', [ProfesorController::class, 'EliminarRelacion']);
+Route::get('/maestros/eliminarRelacion/{idprofesor}/{idclase}/{idaula}/{id}', [ProfesorController::class, 'EliminarRelacion']);
 
 Route::get('/maestros/nuevo/', [ProfesorController::class, 'formulariomaestro']);
 

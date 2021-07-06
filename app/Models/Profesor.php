@@ -12,11 +12,11 @@ class Profesor extends Model
     //relacion de muchos a muchos
     public function clases()
     {
-        return $this->belongsToMany(Clase::class,'profesor_aula_clase')->withPivot('aula_id');
+        return $this->belongsToMany(Clase::class,'profesor_aula_clase')->withPivot('aula_id','id');
     }
 
     public function aulas()
     {
-        return $this->belongsToMany(Aula::class,'profesor_aula_clase')->withPivot('clase_id');
+        return $this->belongsToMany(Aula::class,'profesor_aula_clase')->withPivot('clase_id','id');
     }
 }

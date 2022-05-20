@@ -28,4 +28,9 @@ Database= universidaddb_v2.
 
 guarde el cambio del archivo .env y ejecute en su terminal de VsCode si es que esta utilizando este editor "php artisan serve"
 sino igualmente desde una terminal de git o de la terminal de windows situandose en la carpeta de los archivos del proyecto puede tambien ejecutar el mismo comando.
+
+Antes de todo actualizar composer:
+ejecute el comando "composer update"
+
+Ejecute "php artisan migrate" para crear las tablas relacionales
 abra su navegador y en la url escriba: localhost:8000/ y listo el proyecto abrira exitosamente.

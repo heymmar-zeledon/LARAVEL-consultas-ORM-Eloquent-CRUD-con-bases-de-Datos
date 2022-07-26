@@ -9,6 +9,7 @@ class Profesor extends Model
 {
     use HasFactory;
     protected $guarded = ['id','created_at','update_at'];
+
     //relacion de muchos a muchos
     public function clases()
     {

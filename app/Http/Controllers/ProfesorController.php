@@ -1,24 +1,22 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Clase;
-use App\Models\Aula;
 use Illuminate\Http\Request;
 use App\Models\Profesor;
 use Exception;
-use PhpParser\Node\Stmt\TryCatch;
+use Illuminate\Support\Facades\DB;
 
 class ProfesorController extends Controller
 {
     public function mostrarlista()
     {
         $res = null;
-        $Profesores = Profesor::all();
+        $Profesores = DB::table('profesors')->get();
         return view('Maestros.listamaestros', compact('Profesores'))->with('res',$res);
     }
     public function formulariomaestro(){
-        $clases = Clase::all();
-        $aulas = Aula::all();
+        $clases = DB::table('clases')->get();;
+        $aulas = DB::table('aulas')->get();;
         return view('Maestros.formulariomaestro',compact('clases','aulas'));
     }
 
@@ -42,7 +40,7 @@ class ProfesorController extends Controller
 
             $res = "Se guardo un nuevo profesor con exito!!";
 
-            $Profesores = Profesor::all();
+            $Profesores = DB::table('profesors')->get();
             return view('Maestros.listamaestros', compact('Profesores'))->with('res',$res);
         }
     }
@@ -51,7 +49,7 @@ class ProfesorController extends Controller
         $Prof_delete = Profesor::find($idealiminar);
         $Prof_delete->clases()->detach();
         $Prof_delete->delete();
-        $Profesores = Profesor::all();
+        $Profesores = DB::table('profesors')->get();
         $res = "Se ha eliminado un profesor";
         return view('Maestros.listamaestros', compact('Profesores'))->with('res',$res);
     }
@@ -66,12 +64,14 @@ class ProfesorController extends Controller
         $nombre = $request->input('nombremaestro');
         $apellido = $request->input('apellidomaestro');
         $titulo = $request->input('titulo');
-        $profesor->update([
-            'nombre' => $nombre,
-            'apellido' => $apellido,
-            'titulo' => $titulo,
+       
+        DB::table('profesors')->where('id',$id)->update([
+            'nombre'=> $nombre, 
+            'apellido' => $apellido, 
+            'titulo' => $titulo
         ]);
-        $Profesores = Profesor::all();
+
+        $Profesores = DB::table('profesors')->get();
         $res = "Se ha actualizado un profesor";
         return view('Maestros.listamaestros', compact('Profesores'))->with('res',$res);
     }
@@ -85,8 +85,8 @@ class ProfesorController extends Controller
 
     public function NuevaRelacion($idrelacion)
     {
-        $clases = Clase::all();
-        $aulas = Aula::all();
+        $clases = DB::table('clases')->get();
+        $aulas = DB::table('aulas')->get();
         $profesorRelacion = Profesor::find($idrelacion);
         return view('RelacionNueva',compact('profesorRelacion','clases','aulas'));
     }

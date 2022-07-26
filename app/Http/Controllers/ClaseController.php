@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Clase;
-use App\Models\Profesor;
+use Illuminate\Support\Facades\DB;
 
 class ClaseController extends Controller
 {
     public function mostrarlistaclases()
     {
-        $Clases = Clase::all();
+        $Clases = DB::table('clases')->get();
         $res = null;
         return view('Clases.listaclases',compact('Clases'))->with('res',$res);
     }
@@ -26,14 +26,14 @@ class ClaseController extends Controller
             $nombre = $request->input('nombreclase');
             $credito = $request->input('creditoclase');
 
-            $new_clase = Clase::create([
+            DB::table('clases')->insert([
                 'nombre' => $nombre,
                 'credito' => $credito,
             ]);
 
             $res = "Se guardo una nueva clase con exito!!";
 
-            $Clases = Clase::all();
+            $Clases = DB::table('clases')->get();
             return view('Clases.listaclases', compact('Clases'))->with('res',$res);
         }
     }
@@ -49,18 +49,17 @@ class ClaseController extends Controller
 
     public function actualizar(Request $request, $codclase){
 
-        $Clase = Clase::find($codclase);
         $nombre = $request->input('nombreclase');
         $credito = $request->input('creditoclase');
 
-        $Clase->update([
+        DB::table('clases')->where('id',$codclase)->update([
             'nombre' => $nombre,
             'credito' => $credito,
         ]);
 
         $res = "Se ha actualizado una clase";
 
-        $Clases = Clase::all();
+        $Clases = DB::table('clases')->get();
         return view('Clases.listaclases', compact('Clases'))->with('res',$res);
 
     }

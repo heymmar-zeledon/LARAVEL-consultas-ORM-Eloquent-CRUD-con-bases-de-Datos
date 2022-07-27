@@ -24,13 +24,14 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     </head>
-    <header>@livewire("navegacion")</header>
+    <header>
+        @livewire("navegacion")</header>
     <body>
     <div>
         @livewire("plantilla-main")
     <div class="container">
         <div class="row">
-            <div class="col-sm text-center">
+            <div class="col-sm text-center " style="padding-bottom: 18px;">
                 <div class="card" style="width: 18rem;">
                     <img class="card-img-top" src="/imagenes/images/profesor.jfif" alt="Card image cap">
                     <div class="card-body">

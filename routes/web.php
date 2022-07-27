@@ -2,6 +2,7 @@
 use App\Http\Controllers\ProfesorController;
 use App\Http\Controllers\AulaController;
 use App\Http\Controllers\ClaseController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,7 +18,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->middleware('auth');
+
+Auth::routes();
+
 Route::get('/maestros', [ProfesorController::class, 'mostrarlista']);
 
 Route::post('/maestros/guardar/', [ProfesorController::class, 'guardar']);
@@ -64,3 +68,7 @@ Route::get('/clases/eliminar/{codclase}',[ ClaseController::class, 'eliminar']);
 Route::get('/clases/editar/{codclase}',[ ClaseController::class, 'editar']);
 
 Route::post('/clases/actualizar/{id}',[ClaseController::class, 'actualizar']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
